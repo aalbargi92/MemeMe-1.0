@@ -81,6 +81,7 @@
                         <outlet property="bottomTextField" destination="sJl-BM-wjd" id="uCD-Zw-rYt"/>
                         <outlet property="cameraButton" destination="uS9-KE-QNZ" id="vnP-vD-mJx"/>
                         <outlet property="imageView" destination="D4V-ke-tTT" id="Nuq-lD-UFd"/>
+                        <outlet property="shareButton" destination="QUb-hD-BMg" id="9Bf-pt-Wcs"/>
                         <outlet property="toolbar" destination="y10-Of-2SC" id="v9N-tN-L51"/>
                         <outlet property="topTextField" destination="SGY-ru-cQk" id="wNW-BF-RzN"/>
                     </connections>

@@ -14,6 +14,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate {
     @IBOutlet weak var topTextField: UITextField!
     @IBOutlet weak var bottomTextField: UITextField!
     @IBOutlet weak var cameraButton: UIBarButtonItem!
+    @IBOutlet weak var shareButton: UIBarButtonItem!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var toolbar: UIToolbar!
     
@@ -78,6 +79,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate {
         imageView.image = nil
                configureTextField(topTextField, with: defaultTopString)
                configureTextField(bottomTextField, with: defaultBottomString)
+        shareButton.isEnabled = false
     }
     
     private func hideToolbar(hide: Bool) {
@@ -157,6 +159,7 @@ extension ViewController: UIImagePickerControllerDelegate {
         
         selectedImage = image
         imageView.image = selectedImage
+        shareButton.isEnabled = true
     }
 }
 
