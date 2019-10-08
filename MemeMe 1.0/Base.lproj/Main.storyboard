@@ -37,14 +37,14 @@
                                 <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                             </imageView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SGY-ru-cQk">
-                                <rect key="frame" x="16" y="104" width="382" height="20"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <rect key="frame" x="16" y="112" width="382" height="21"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters" returnKeyType="done"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sJl-BM-wjd">
-                                <rect key="frame" x="16" y="780" width="382" height="17"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TZH-zJ-GCW">
+                                <rect key="frame" x="16" y="772" width="382" height="17"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters" returnKeyType="done"/>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -54,14 +54,14 @@
                             <constraint firstItem="D4V-ke-tTT" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="F71-dO-mvs"/>
                             <constraint firstItem="y10-Of-2SC" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="FS4-Oh-kdn"/>
                             <constraint firstItem="y10-Of-2SC" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="KwX-AI-VGb"/>
+                            <constraint firstItem="y10-Of-2SC" firstAttribute="top" secondItem="TZH-zJ-GCW" secondAttribute="bottom" constant="24" id="LHu-Oq-seJ"/>
                             <constraint firstItem="D4V-ke-tTT" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="OaW-64-5ly"/>
                             <constraint firstItem="SGY-ru-cQk" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="VfG-0T-ebP"/>
-                            <constraint firstItem="SGY-ru-cQk" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="16" id="dWE-R1-9KL"/>
-                            <constraint firstItem="sJl-BM-wjd" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="l9C-I8-0zp"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="sJl-BM-wjd" secondAttribute="trailing" constant="16" id="ltH-mX-1Lf"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="TZH-zJ-GCW" secondAttribute="trailing" constant="16" id="Xhl-ji-JnF"/>
+                            <constraint firstItem="TZH-zJ-GCW" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="cEt-5y-uRt"/>
+                            <constraint firstItem="SGY-ru-cQk" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="24" id="dWE-R1-9KL"/>
                             <constraint firstItem="D4V-ke-tTT" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="oSl-J6-kWn"/>
                             <constraint firstItem="y10-Of-2SC" firstAttribute="top" secondItem="D4V-ke-tTT" secondAttribute="bottom" id="qbI-wL-20e"/>
-                            <constraint firstItem="y10-Of-2SC" firstAttribute="top" secondItem="sJl-BM-wjd" secondAttribute="bottom" constant="16" id="yYN-5g-ANE"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -78,7 +78,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="bottomTextField" destination="sJl-BM-wjd" id="uCD-Zw-rYt"/>
+                        <outlet property="bottomTextField" destination="TZH-zJ-GCW" id="j9y-g7-h6p"/>
                         <outlet property="cameraButton" destination="uS9-KE-QNZ" id="vnP-vD-mJx"/>
                         <outlet property="imageView" destination="D4V-ke-tTT" id="Nuq-lD-UFd"/>
                         <outlet property="shareButton" destination="QUb-hD-BMg" id="9Bf-pt-Wcs"/>

@@ -19,8 +19,9 @@ class ViewController: UIViewController, UINavigationControllerDelegate {
     @IBOutlet weak var toolbar: UIToolbar!
     
     // MARK: Vars
-    var defaultTopString = "Top"
-    var defaultBottomString = "Bottom"
+    var defaultTopString = "TOP"
+    var defaultBottomString = "BOTTOM"
+    var currentTextField: UITextField!
     var selectedImage: UIImage?
     var imagePicker = UIImagePickerController()
     
@@ -29,8 +30,6 @@ class ViewController: UIViewController, UINavigationControllerDelegate {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-        cameraButton.isEnabled = UIImagePickerController.isCameraDeviceAvailable(.rear)
-        
         reset()
         
         imagePicker.delegate = self
@@ -38,6 +37,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
+        cameraButton.isEnabled = UIImagePickerController.isCameraDeviceAvailable(.rear)
         subscribeToKeyboardNotifications()
     }
     
@@ -52,7 +52,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate {
             let activity = UIActivityViewController(activityItems: [image], applicationActivities: [])
             activity.completionWithItemsHandler = {(_, completed, _, _) in
                 if completed {
-                    return
+                    self.save(image)
                 }
             }
             present(activity, animated: true, completion: nil)
@@ -80,6 +80,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate {
                configureTextField(topTextField, with: defaultTopString)
                configureTextField(bottomTextField, with: defaultBottomString)
         shareButton.isEnabled = false
+        view.endEditing(true)
     }
     
     private func hideToolbar(hide: Bool) {
@@ -113,6 +114,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate {
             NSAttributedString.Key.strokeColor: UIColor.black,
             NSAttributedString.Key.foregroundColor: UIColor.white,
             NSAttributedString.Key.paragraphStyle:  paragarghStyle,
+            NSAttributedString.Key.font: UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
             NSAttributedString.Key.strokeWidth: -2
         ]
         
@@ -135,14 +137,22 @@ class ViewController: UIViewController, UINavigationControllerDelegate {
     }
     
     @objc func keyboardWIllShow(notification: NSNotification) {
+        if currentTextField == topTextField {
+            return
+        }
         if let keyboardFrame = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
             let keyboardSize = keyboardFrame.cgRectValue
-            view.transform = .init(translationX: 0, y: -keyboardSize.height)
+            view.frame.origin.y = -keyboardSize.height
         }
     }
     
     @objc func keyboardWillHide(notification: NSNotification) {
-        view.transform = .identity
+        view.frame.origin.y = 0
+    }
+    
+    private func save(_ memeImage: UIImage) {
+        // TODO: Save Image
+        let meme = Meme(topText: topTextField.text!, bottomText: bottomTextField.text!, originalImage: selectedImage!, memeImage: memeImage)
     }
 }
 
@@ -165,11 +175,12 @@ extension ViewController: UIImagePickerControllerDelegate {
 
 extension ViewController: UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
+        currentTextField = textField
         textField.text = ""
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        view.endEditing(true)
+        textField.resignFirstResponder()
         return true
     }
 }
